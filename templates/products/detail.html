@@ -1,0 +1,57 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+
+{% block title %}{{ book.title }} - بوکن{% endblock %}
+
+{% block content %}
+<section class="section page-header" aria-label="page header">
+  <div class="container">
+    <h1 class="h1 page-title">{{ book.title }}</h1>
+    <nav class="breadcrumb">
+      <a href="{% url 'core:index' %}" class="breadcrumb-link">خانه</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="{% url 'core:shop' %}" class="breadcrumb-link">فروشگاه</a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">{{ book.title }}</span>
+    </nav>
+  </div>
+  </section>
+
+<section class="section" aria-label="product detail">
+  <div class="container">
+    <div class="product-detail">
+      <div class="product-media">
+        {% if book.image %}
+          <img src="{{ book.image.url }}" alt="{{ book.title }}" class="img-cover" style="max-width: 100%; height: auto;"/>
+        {% endif %}
+      </div>
+      <div class="product-info">
+        <h2 class="h2">{{ book.title }}</h2>
+        {% if book.author %}
+          <p class="product-meta">نویسنده: {{ book.author }}</p>
+        {% endif %}
+        {% if book.publisher %}
+          <p class="product-meta">ناشر: {{ book.publisher }}</p>
+        {% endif %}
+        {% if book.publication_date %}
+          <p class="product-meta">تاریخ انتشار: {{ book.publication_date|date:'Y-m-d' }}</p>
+        {% endif %}
+        <p class="product-meta">تعداد صفحات: {{ book.pages }}</p>
+        <p class="product-price">{{ book.price }} تومان</p>
+        {% if book.genre.all %}
+          <p class="product-meta">ژانرها: {% for g in book.genre.all %}{{ g.name }}{% if not forloop.last %}، {% endif %}{% endfor %}</p>
+        {% endif %}
+        <div class="product-actions">
+          <button class="btn btn-primary">افزودن به سبد خرید</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-description" style="margin-top: 2rem;">
+      <h3 class="h3">توضیحات</h3>
+      <p>{{ book.description }}</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+

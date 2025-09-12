@@ -1,0 +1,86 @@
+{% load static %}
+<footer class="footer has-bg-image" style="background-image: url('{% static 'images/section-bg.jpg' %}')">
+
+  <div class="footer-top section">
+    <div class="container grid-list">
+
+      <div class="footer-brand">
+
+        <a href="{% url 'core:index' %}" class="logo">
+          <img src="{% static 'images/logo.svg' %}" width="138" height="28" alt="booken home">
+        </a>
+
+        <p class="footer-text">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+        </p>
+
+        <ul class="social-list">
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-pinterest"></ion-icon>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">شرکتی</p></li>
+        <li><a href="#" class="footer-link">فرصت‌های شغلی</a></li>
+        <li><a href="#" class="footer-link">درباره ما</a></li>
+        <li><a href="#" class="footer-link">تماس با ما</a></li>
+        <li><a href="#" class="footer-link">سوالات متداول</a></li>
+        <li><a href="#" class="footer-link">فروشندگان</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">اطلاعات</p></li>
+        <li><a href="{% url 'core:shop' %}" class="footer-link">فروشگاه آنلاین</a></li>
+        <li><a href="#" class="footer-link">سیاست حریم خصوصی</a></li>
+        <li><a href="#" class="footer-link">سیاست بازگشت</a></li>
+        <li><a href="#" class="footer-link">سیاست ارسال</a></li>
+        <li><a href="#" class="footer-link">شرایط خدمات</a></li>
+      </ul>
+
+      <ul class="footer-list">
+        <li><p class="footer-list-title">خدمات</p></li>
+        <li><a href="#" class="footer-link">نقد و بررسی کتاب</a></li>
+        <li><a href="#" class="footer-link">مشاوره کتاب</a></li>
+        <li><a href="#" class="footer-link">خدمات تحویل</a></li>
+        <li><a href="#" class="footer-link">بیمه کتاب</a></li>
+        <li><a href="#" class="footer-link">نوشتن کتاب</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="copyright">کپی رایت ۱۴۰۳ | ساخته شده با عشق توسط codewithsadee.</p>
+      <img src="{% static 'images/payment-mehtod.png' %}" width="311" height="30" loading="lazy" alt="Payment method" class="w-100">
+    </div>
+  </div>
+
+</footer>
+
+

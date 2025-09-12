@@ -1,0 +1,64 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+
+{% block title %}حذف کتاب - بوکن{% endblock %}
+
+{% block content %}
+
+<h1>حذف کتاب</h1>
+
+<div style="background: #fff3cd; color: #856404; padding: 15px; margin: 20px 0; border-radius: 5px; border: 1px solid #ffeaa7;">
+    <strong>هشدار:</strong> آیا از حذف این کتاب اطمینان دارید؟ این عمل قابل بازگشت نیست!
+</div>
+
+<!-- اطلاعات کتاب -->
+<div style="background: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 5px; display: flex; gap: 20px;">
+    <div>
+        {% if book.image %}
+            <img src="{{ book.image.url }}" alt="{{ book.title }}" style="width: 120px; height: 150px; object-fit: cover; border-radius: 5px;">
+        {% else %}
+            <div style="width: 120px; height: 150px; background: #e9ecef; display: flex; align-items: center; justify-content: center; border-radius: 5px; color: #6c757d;">
+                بدون تصویر
+            </div>
+        {% endif %}
+    </div>
+    
+    <div style="flex: 1;">
+        <h3 style="margin: 0 0 10px 0; color: #212529;">{{ book.title }}</h3>
+        
+        <p style="margin: 5px 0;"><strong>نویسنده:</strong> {{ book.author }}</p>
+        <p style="margin: 5px 0;"><strong>ناشر:</strong> {{ book.publisher }}</p>
+        <p style="margin: 5px 0;"><strong>قیمت:</strong> {{ book.price }} تومان</p>
+        <p style="margin: 5px 0;"><strong>تعداد صفحات:</strong> {{ book.pages }}</p>
+        <p style="margin: 5px 0;"><strong>موجودی:</strong> {{ book.quantity }}</p>
+        <p style="margin: 5px 0;"><strong>تاریخ انتشار:</strong> {{ book.publication_date|date:"Y/m/d" }}</p>
+        
+        <div style="margin: 10px 0;">
+            <strong>ژانرها:</strong>
+            {% for genre in book.genre.all %}
+                <span style="background: #007bff; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px; margin: 2px;">
+                    {{ genre.name }}
+                </span>
+            {% endfor %}
+        </div>
+        
+        <div style="margin: 10px 0;">
+            <strong>توضیحات:</strong>
+            <p style="margin: 5px 0; color: #6c757d;">{{ book.description|truncatechars:200 }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- فرم حذف -->
+<form method="POST" style="text-align: center; margin: 30px 0;">
+    {% csrf_token %}
+    
+    <button type="submit" style="background: #dc3545; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 0 10px;">
+        بله، حذف کن
+    </button>
+    <a href="{% url 'core:book_management' %}" style="background: #6c757d; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-size: 16px;">
+        انصراف
+    </a>
+</form>
+
+{% endblock %}

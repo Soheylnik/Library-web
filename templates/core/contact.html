@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>تماس با ما - بوکن</title>
+  <meta name="title" content="تماس با ما - بوکن">
+  <meta name="description" content="تماس با تیم پشتیبانی بوکن - سوالات و پیشنهادات خود را با ما در میان بگذارید">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="{% static './favicon.svg' %}" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Work+Sans:wght@400;500;700&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="header-top">
+      <div class="container">
+
+        <a href="index.html" class="logo">
+          <img src="{% static './assets/images/logo.svg' %}" width="138" height="28" alt="booken home">
+        </a>
+
+        <div class="input-wrapper">
+          <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+          <button class="btn btn-primary">جستجو</button>
+        </div>
+
+        <div class="header-action">
+
+          <button class="header-action-btn" aria-label="cart" title="سبد خرید">
+            <span class="span">0</span>
+
+            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="nav-open-btn" aria-label="open menu" title="باز کردن منو" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="header-action-btn" aria-label="user" title="کاربر">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="header-bottom" data-navbar>
+      <div class="container">
+
+        <nav class="navbar">
+
+          <button class="nav-close-btn" data-nav-toggler aria-label="clsoe menu" title="بستن منو">
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <div class="navbar-top">
+            <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+            <button class="search-btn" aria-label="Search">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+
+            <li>
+              <a href="index.html" class="navbar-link">خانه</a>
+            </li>
+
+            <li>
+              <a href="blog.html" class="navbar-link">وبلاگ</a>
+            </li>
+
+            <li>
+              <a href="shop.html" class="navbar-link">فروشگاه</a>
+            </li>
+
+            <li>
+              <a href="about.html" class="navbar-link">درباره ما</a>
+            </li>
+
+            <li>
+              <a href="contact.html" class="navbar-link active">تماس با ما</a>
+            </li>
+
+          </ul>
+
+        </nav>
+
+        <a href="tel:+989123456789" class="header-contact-link">
+          <ion-icon name="headset-outline" aria-hidden="true"></ion-icon>
+
+          <span class="span">(+98)-912-345-6789</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="overlay" data-overlay data-nav-toggler></div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #PAGE HEADER
+      -->
+
+      <section class="section page-header" aria-label="page header">
+        <div class="container">
+
+          <h1 class="h1 page-title">تماس با ما</h1>
+
+          <nav class="breadcrumb">
+            <a href="index.html" class="breadcrumb-link">خانه</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">تماس با ما</span>
+          </nav>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #CONTACT SECTION
+      -->
+
+      <section class="section contact" aria-label="contact">
+        <div class="container">
+
+          <div class="contact-content">
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+              <h2 class="h2 section-title">پیام خود را برای ما ارسال کنید</h2>
+              
+              <p class="section-text">
+                سوالی دارید؟ پیشنهادی برای بهبود خدمات ما دارید؟ 
+                تیم پشتیبانی ما آماده پاسخگویی به شماست.
+              </p>
+
+              <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                  <label for="name" class="form-label">نام و نام خانوادگی *</label>
+                  <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">ایمیل *</label>
+                  <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone" class="form-label">شماره تلفن</label>
+                  <input type="tel" id="phone" name="phone" class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="subject" class="form-label">موضوع *</label>
+                  <input type="text" id="subject" name="subject" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">پیام *</label>
+                  <textarea id="message" name="message" class="form-textarea" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  ارسال پیام
+                  <ion-icon name="send-outline"></ion-icon>
+                </button>
+              </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info-section">
+              <h2 class="h2 section-title">اطلاعات تماس</h2>
+
+              <div class="contact-info-grid">
+                
+                <div class="contact-info-item">
+                  <div class="info-icon">
+                    <ion-icon name="call-outline"></ion-icon>
+                  </div>
+                  <div class="info-content">
+                    <h3 class="info-title">تلفن</h3>
+                    <p class="info-text">+98-912-345-6789</p>
+                    <p class="info-text">+98-21-1234-5678</p>
+                  </div>
+                </div>
+
+                <div class="contact-info-item">
+                  <div class="info-icon">
+                    <ion-icon name="mail-outline"></ion-icon>
+                  </div>
+                  <div class="info-content">
+                    <h3 class="info-title">ایمیل</h3>
+                    <p class="info-text">info@booken.com</p>
+                    <p class="info-text">support@booken.com</p>
+                  </div>
+                </div>
+
+                <div class="contact-info-item">
+                  <div class="info-icon">
+                    <ion-icon name="location-outline"></ion-icon>
+                  </div>
+                  <div class="info-content">
+                    <h3 class="info-title">آدرس</h3>
+                    <p class="info-text">خیابان ولیعصر، پلاک ۱۲۳</p>
+                    <p class="info-text">تهران، ایران</p>
+                  </div>
+                </div>
+
+                <div class="contact-info-item">
+                  <div class="info-icon">
+                    <ion-icon name="time-outline"></ion-icon>
+                  </div>
+                  <div class="info-content">
+                    <h3 class="info-title">ساعات کاری</h3>
+                    <p class="info-text">شنبه تا چهارشنبه: ۹:۰۰ - ۱۸:۰۰</p>
+                    <p class="info-text">پنج‌شنبه: ۱۰:۰۰ - ۱۶:۰۰</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Social Media -->
+              <div class="social-section">
+                <h3 class="h3">ما را در شبکه‌های اجتماعی دنبال کنید</h3>
+                
+                <ul class="social-list">
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-instagram"></ion-icon>
+                      <span>اینستاگرام</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-telegram"></ion-icon>
+                      <span>تلگرام</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-whatsapp"></ion-icon>
+                      <span>واتساپ</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                      <span>لینکدین</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Newsletter -->
+              <div class="newsletter-section">
+                <h3 class="h3">عضویت در خبرنامه</h3>
+                <p class="newsletter-text">
+                  آخرین اخبار، تخفیف‌ها و محصولات جدید را در ایمیل خود دریافت کنید
+                </p>
+                
+                <form class="newsletter-form" id="newsletterForm">
+                  <div class="newsletter-input-group">
+                    <input type="email" placeholder="ایمیل خود را وارد کنید" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">
+                      <ion-icon name="send-outline"></ion-icon>
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #MAP SECTION
+      -->
+
+      <section class="section map-section" aria-label="map">
+        <div class="container">
+          <h2 class="h2 section-title text-center">موقعیت ما</h2>
+          
+          <div class="map-container">
+            <div class="map-placeholder">
+              <ion-icon name="location-outline"></ion-icon>
+              <p>نقشه موقعیت فروشگاه</p>
+              <p>خیابان ولیعصر، پلاک ۱۲۳، تهران</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer has-bg-image" style="background-image: url('./assets/images/section-bg.jpg')">
+
+    <div class="footer-top section">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="index.html" class="logo">
+            <img src="{% static './assets/images/logo.svg' %}" width="138" height="28" alt="booken home">
+          </a>
+
+          <p class="footer-text">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">شرکتی</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فرصت‌های شغلی</a>
+          </li>
+
+          <li>
+            <a href="about.html" class="footer-link">درباره ما</a>
+          </li>
+
+          <li>
+            <a href="contact.html" class="footer-link">تماس با ما</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سوالات متداول</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فروشندگان</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">اطلاعات</p>
+          </li>
+
+          <li>
+            <a href="shop.html" class="footer-link">فروشگاه آنلاین</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست حریم خصوصی</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست بازگشت</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست ارسال</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">شرایط خدمات</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">خدمات</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نقد و بررسی کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">مشاوره کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">خدمات تحویل</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">بیمه کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نوشتن کتاب</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          کپی رایت ۱۴۰۳ | ساخته شده با عشق توسط codewithsadee.
+        </p>
+
+        <img src="{% static './assets/images/payment-mehtod.png' %}" width="311" height="30" loading="lazy" alt="Payment method"
+          class="w-100">
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="{% static './assets/js/script.js' %}" defer></script>
+  <script src="{% static './assets/js/contact.js' %}" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>درباره ما - بوکن</title>
+  <meta name="title" content="درباره ما - بوکن">
+  <meta name="description" content="درباره فروشگاه آنلاین کتاب بوکن و تیم ما">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="{% static './favicon.svg' %}" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Work+Sans:wght@400;500;700&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="header-top">
+      <div class="container">
+
+        <a href="index.html" class="logo">
+          <img src="{% static './assets/images/logo.svg' %}" width="138" height="28" alt="booken home">
+        </a>
+
+        <div class="input-wrapper">
+          <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+          <button class="btn btn-primary">جستجو</button>
+        </div>
+
+        <div class="header-action">
+
+          <button class="header-action-btn" aria-label="cart" title="سبد خرید">
+            <span class="span">0</span>
+
+            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="nav-open-btn" aria-label="open menu" title="باز کردن منو" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="header-action-btn" aria-label="user" title="کاربر">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="header-bottom" data-navbar>
+      <div class="container">
+
+        <nav class="navbar">
+
+          <button class="nav-close-btn" data-nav-toggler aria-label="clsoe menu" title="بستن منو">
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <div class="navbar-top">
+            <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+            <button class="search-btn" aria-label="Search">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+
+            <li>
+              <a href="index.html" class="navbar-link">خانه</a>
+            </li>
+
+            <li>
+              <a href="blog.html" class="navbar-link">وبلاگ</a>
+            </li>
+
+            <li>
+              <a href="shop.html" class="navbar-link">فروشگاه</a>
+            </li>
+
+            <li>
+              <a href="about.html" class="navbar-link active">درباره ما</a>
+            </li>
+
+            <li>
+              <a href="contact.html" class="navbar-link">تماس با ما</a>
+            </li>
+
+          </ul>
+
+        </nav>
+
+        <a href="tel:+989123456789" class="header-contact-link">
+          <ion-icon name="headset-outline" aria-hidden="true"></ion-icon>
+
+          <span class="span">(+98)-912-345-6789</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="overlay" data-overlay data-nav-toggler></div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #PAGE HEADER
+      -->
+
+      <section class="section page-header" aria-label="page header">
+        <div class="container">
+
+          <h1 class="h1 page-title">درباره ما</h1>
+
+          <nav class="breadcrumb">
+            <a href="index.html" class="breadcrumb-link">خانه</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">درباره ما</span>
+          </nav>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #ABOUT HERO
+      -->
+
+      <section class="section about-hero" aria-label="about hero">
+        <div class="container">
+
+          <div class="about-hero-content">
+            <div class="about-text">
+              <h2 class="h2 section-title">داستان ما</h2>
+              
+              <p class="section-text">
+                بوکن در سال ۱۴۰۰ با هدف ایجاد بزرگترین پلتفرم فروش کتاب آنلاین در ایران تأسیس شد. 
+                ما معتقدیم که کتاب‌ها قدرت تغییر جهان را دارند و هر فردی باید به راحتی به کتاب‌های مورد علاقه‌اش دسترسی داشته باشد.
+              </p>
+              
+              <p class="section-text">
+                امروز با بیش از ۱۰۰,۰۰۰ عنوان کتاب در دسته‌بندی‌های مختلف، خدمت‌رسان میلیون‌ها کتاب‌خوان در سراسر کشور هستیم. 
+                تیم ما متشکل از کتاب‌دوستان و متخصصان فناوری است که با عشق و تعهد، بهترین تجربه خرید کتاب را برای شما فراهم می‌کنند.
+              </p>
+            </div>
+            
+            <div class="about-image">
+              <img src="{% static './assets/images/hero-banner.png' %}" alt="درباره بوکن" class="img-cover">
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #MISSION & VISION
+      -->
+
+      <section class="section mission-vision" aria-label="mission and vision">
+        <div class="container">
+
+          <div class="mission-vision-grid">
+            
+            <div class="mission-card">
+              <div class="card-icon">
+                <ion-icon name="flag-outline"></ion-icon>
+              </div>
+              
+              <h3 class="h3 card-title">ماموریت ما</h3>
+              
+              <p class="card-text">
+                ایجاد دسترسی آسان و سریع به تمامی کتاب‌های مورد نیاز مشتریان با بهترین کیفیت و قیمت مناسب، 
+                تا فرهنگ مطالعه و کتابخوانی در جامعه گسترش یابد.
+              </p>
+            </div>
+
+            <div class="vision-card">
+              <div class="card-icon">
+                <ion-icon name="eye-outline"></ion-icon>
+              </div>
+              
+              <h3 class="h3 card-title">چشم‌انداز ما</h3>
+              
+              <p class="card-text">
+                تبدیل شدن به مرجع اصلی خرید کتاب آنلاین در خاورمیانه و تأثیرگذاری مثبت بر فرهنگ مطالعه 
+                و دانش‌افزایی در منطقه.
+              </p>
+            </div>
+
+            <div class="values-card">
+              <div class="card-icon">
+                <ion-icon name="heart-outline"></ion-icon>
+              </div>
+              
+              <h3 class="h3 card-title">ارزش‌های ما</h3>
+              
+              <p class="card-text">
+                کیفیت، اعتماد، نوآوری، و تعهد به مشتریان از اصلی‌ترین ارزش‌های ماست. 
+                ما همواره در تلاش برای بهبود خدمات و رضایت مشتریان هستیم.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #STATS
+      -->
+
+      <section class="section stats" aria-label="statistics">
+        <div class="container">
+
+          <h2 class="h2 section-title text-center">آمار و دستاوردها</h2>
+
+          <div class="stats-grid">
+            
+            <div class="stat-item">
+              <div class="stat-number" data-count="100000">0</div>
+              <div class="stat-label">عنوان کتاب</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number" data-count="50000">0</div>
+              <div class="stat-label">مشتری راضی</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number" data-count="15">0</div>
+              <div class="stat-label">دسته‌بندی</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number" data-count="99">0</div>
+              <div class="stat-label">درصد رضایت</div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #TEAM
+      -->
+
+      <section class="section team" aria-label="our team">
+        <div class="container">
+
+          <h2 class="h2 section-title text-center">تیم ما</h2>
+          
+          <p class="section-text text-center">
+            تیم بوکن متشکل از متخصصان با تجربه و علاقه‌مند به کتاب است
+          </p>
+
+          <div class="team-grid">
+            
+            <div class="team-member">
+              <div class="member-image">
+                <img src="{% static './assets/images/hero-banner.png' %}" alt="مدیرعامل" class="img-cover">
+              </div>
+              
+              <div class="member-info">
+                <h4 class="member-name">احمد محمدی</h4>
+                <p class="member-position">مدیرعامل و بنیان‌گذار</p>
+                <p class="member-bio">
+                  کارآفرین با ۱۵ سال تجربه در صنعت نشر و فناوری
+                </p>
+                
+                <ul class="member-social">
+                  <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                  <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                  <li><a href="#" class="social-link"><ion-icon name="mail-outline"></ion-icon></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="team-member">
+              <div class="member-image">
+                <img src="{% static './assets/images/hero-banner.png' %}" alt="مدیر فنی" class="img-cover">
+              </div>
+              
+              <div class="member-info">
+                <h4 class="member-name">فاطمه احمدی</h4>
+                <p class="member-position">مدیر فنی</p>
+                <p class="member-bio">
+                  متخصص فناوری اطلاعات با تخصص در توسعه پلتفرم‌های آنلاین
+                </p>
+                
+                <ul class="member-social">
+                  <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                  <li><a href="#" class="social-link"><ion-icon name="logo-github"></ion-icon></a></li>
+                  <li><a href="#" class="social-link"><ion-icon name="mail-outline"></ion-icon></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="team-member">
+              <div class="member-image">
+                <img src="{% static './assets/images/hero-banner.png' %}" alt="مدیر بازاریابی" class="img-cover">
+              </div>
+              
+              <div class="member-info">
+                <h4 class="member-name">علی رضایی</h4>
+                <p class="member-position">مدیر بازاریابی</p>
+                <p class="member-bio">
+                  متخصص بازاریابی دیجیتال با تجربه در صنعت کتاب و نشر
+                </p>
+                
+                <ul class="member-social">
+                  <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                  <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                  <li><a href="#" class="social-link"><ion-icon name="mail-outline"></ion-icon></a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #CONTACT CTA
+      -->
+
+      <section class="section contact-cta has-bg-image" aria-label="contact call to action"
+        style="background-image: url('./assets/images/section-bg.jpg')">
+        <div class="container">
+
+          <div class="cta-content">
+            <h2 class="h2 section-title">با ما در ارتباط باشید</h2>
+            
+            <p class="section-text">
+              سوالی دارید؟ پیشنهادی برای بهبود خدمات ما دارید؟ 
+              تیم پشتیبانی ما آماده پاسخگویی به شماست.
+            </p>
+            
+            <div class="cta-buttons">
+              <a href="contact.html" class="btn btn-primary">تماس با ما</a>
+              <a href="shop.html" class="btn btn-outline">مشاهده محصولات</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer has-bg-image" style="background-image: url('./assets/images/section-bg.jpg')">
+
+    <div class="footer-top section">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="index.html" class="logo">
+            <img src="{% static './assets/images/logo.svg' %}" width="138" height="28" alt="booken home">
+          </a>
+
+          <p class="footer-text">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">شرکتی</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فرصت‌های شغلی</a>
+          </li>
+
+          <li>
+            <a href="about.html" class="footer-link">درباره ما</a>
+          </li>
+
+          <li>
+            <a href="contact.html" class="footer-link">تماس با ما</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سوالات متداول</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فروشندگان</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">اطلاعات</p>
+          </li>
+
+          <li>
+            <a href="shop.html" class="footer-link">فروشگاه آنلاین</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست حریم خصوصی</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست بازگشت</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست ارسال</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">شرایط خدمات</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">خدمات</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نقد و بررسی کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">مشاوره کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">خدمات تحویل</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">بیمه کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نوشتن کتاب</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          کپی رایت ۱۴۰۳ | ساخته شده با عشق توسط codewithsadee.
+        </p>
+
+        <img src="{% static './assets/images/payment-mehtod.png' %}" width="311" height="30" loading="lazy" alt="Payment method"
+          class="w-100">
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="{% static './assets/js/script.js' %}" defer></script>
+  <script src="{% static './assets/js/about.js' %}" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

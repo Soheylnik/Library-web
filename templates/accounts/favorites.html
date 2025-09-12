@@ -1,0 +1,70 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+
+{% block title %}علاقه‌مندی‌ها - بوکن{% endblock %}
+
+{% block content %}
+<div style="max-width: 1200px; margin: 50px auto; padding: 20px;">
+    <h2 style="text-align: center; margin-bottom: 30px; color: #333;">کتاب‌های مورد علاقه</h2>
+    
+    {% if favorite_books %}
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+            {% for favorite in favorite_books %}
+            <div style="background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div style="height: 200px; overflow: hidden;">
+                    {% if favorite.book.image %}
+                        <img src="{{ favorite.book.image.url }}" alt="{{ favorite.book.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                    {% else %}
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f8f9fa, #e9ecef); display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 18px;">
+                            📚<br>بدون تصویر
+                        </div>
+                    {% endif %}
+                </div>
+                <div style="padding: 20px;">
+                    <h3 style="margin: 0 0 10px 0; color: #333; font-size: 18px;">{{ favorite.book.title }}</h3>
+                    <p style="color: #666; margin: 0 0 10px 0; font-size: 14px;">{{ favorite.book.author }}</p>
+                    <p style="color: #28a745; font-weight: bold; margin: 0 0 15px 0;">{{ favorite.book.price }} تومان</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <button onclick="toggleFavorite({{ favorite.book.id }})" style="background: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                            حذف از علاقه‌مندی‌ها
+                        </button>
+                        <small style="color: #999;">{{ favorite.created_at|date:"Y/m/d" }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div style="text-align: center; padding: 50px; color: #666;">
+            <div style="font-size: 48px; margin-bottom: 20px;">📚</div>
+            <h3>هنوز کتابی به علاقه‌مندی‌ها اضافه نکرده‌اید</h3>
+            <p>برای شروع، کتاب‌های مورد علاقه خود را از فروشگاه انتخاب کنید</p>
+            <a href="{% url 'core:shop' %}" style="display: inline-block; margin-top: 20px; padding: 12px 30px; background: #007bff; color: white; text-decoration: none; border-radius: 5px;">مشاهده فروشگاه</a>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+function toggleFavorite(bookId) {
+    fetch('{% url "accounts:toggle_favorite" %}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({
+            book_id: bookId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'removed') {
+            location.reload();
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+</script>
+{% endblock %}

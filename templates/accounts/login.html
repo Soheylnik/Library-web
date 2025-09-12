@@ -1,0 +1,559 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>ورود - بوکن</title>
+  <meta name="title" content="ورود - بوکن">
+  <meta name="description" content="ورود به حساب کاربری بوکن">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="{% static 'images/logo.svg' %}" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+  <!-- 
+    - custom styles for form inputs
+  -->
+  <style>
+    .form-input {
+      color: #495057 !important;
+      background-color: white !important;
+      font-size: 16px !important;
+      -webkit-text-fill-color: #495057 !important;
+      -webkit-opacity: 1 !important;
+      opacity: 1 !important;
+    }
+    
+    .form-input:focus {
+      color: #495057 !important;
+      background-color: white !important;
+      border-color: #007bff !important;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+    }
+    
+    .form-input::placeholder {
+      color: #6c757d !important;
+      opacity: 1 !important;
+    }
+    
+    .auth-btn {
+      width: 100%;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .auth-btn:hover {
+      background: linear-gradient(135deg, #0056b3, #004085);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+    
+    .auth-btn:active {
+      transform: translateY(0);
+    }
+    
+    .auth-btn:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  </style>
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Work+Sans:wght@400;500;700&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="header-top">
+      <div class="container">
+
+        <a href="{% url 'core:index' %}" class="logo">
+          <img src="{% static 'images/logo.svg' %}" width="138" height="28" alt="booken home">
+        </a>
+
+        <div class="input-wrapper">
+          <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+          <button class="btn btn-primary">جستجو</button>
+        </div>
+
+        <div class="header-action">
+
+          <button class="header-action-btn" aria-label="cart" title="سبد خرید">
+            <span class="span">0</span>
+
+            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="nav-open-btn" aria-label="open menu" title="باز کردن منو" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="header-action-btn" aria-label="user" title="کاربر">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="header-bottom" data-navbar>
+      <div class="container">
+
+        <nav class="navbar">
+
+          <button class="nav-close-btn" data-nav-toggler aria-label="clsoe menu" title="بستن منو">
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <div class="navbar-top">
+            <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+            <button class="search-btn" aria-label="Search">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+
+            <li>
+              <a href="{% url 'core:index' %}" class="navbar-link">خانه</a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-link">وبلاگ</a>
+            </li>
+
+            <li>
+              <a href="{% url 'core:shop' %}" class="navbar-link">فروشگاه</a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-link">درباره ما</a>
+            </li>
+
+            <li>
+              <a href="#" class="navbar-link">تماس با ما</a>
+            </li>
+
+          </ul>
+
+        </nav>
+
+        <a href="tel:+989123456789" class="header-contact-link">
+          <ion-icon name="headset-outline" aria-hidden="true"></ion-icon>
+
+          <span class="span">(+98)-912-345-6789</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="overlay" data-overlay data-nav-toggler></div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #AUTH SECTION
+      -->
+
+      <section class="section auth-section" aria-label="authentication">
+        <div class="container">
+
+          <div class="auth-container">
+            
+            <!-- Login Form -->
+            <div class="auth-form-container">
+              <div class="auth-header">
+                <h1 class="h1 auth-title">ورود به حساب کاربری</h1>
+                <p class="auth-subtitle">خوش آمدید! لطفاً اطلاعات خود را وارد کنید</p>
+              </div>
+
+              {% if messages %}
+                {% for message in messages %}
+                  <div style="background: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #f5c6cb;">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+
+              <form class="auth-form" id="loginForm" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="username" class="form-label">نام کاربری</label>
+                  <div class="input-wrapper">
+                    <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                    <input type="text" id="username" name="username" class="form-input" placeholder="نام کاربری خود را وارد کنید" value="{{ request.POST.username }}" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="password" class="form-label">رمز عبور</label>
+                  <div class="input-wrapper">
+                    <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                    <input type="password" id="password" name="password" class="form-input" placeholder="رمز عبور خود را وارد کنید" required>
+                    <button type="button" class="password-toggle" id="passwordToggle">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-options">
+                  <label class="checkbox-wrapper">
+                    <input type="checkbox" class="checkbox-input" id="rememberMe">
+                    <span class="checkbox-mark"></span>
+                    <span class="checkbox-label">مرا به خاطر بسپار</span>
+                  </label>
+                  
+                  <a href="#" class="forgot-password">فراموشی رمز عبور؟</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary auth-btn" id="loginButton">
+                  <span class="btn-text">ورود</span>
+                  <ion-icon name="log-in-outline"></ion-icon>
+                </button>
+              </form>
+
+              <div class="auth-divider">
+                <span>یا</span>
+              </div>
+
+              <div class="social-login">
+                <button class="social-btn google-btn">
+                  <ion-icon name="logo-google"></ion-icon>
+                  ورود با گوگل
+                </button>
+                
+                <button class="social-btn facebook-btn">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                  ورود با فیسبوک
+                </button>
+              </div>
+
+              <div class="auth-footer">
+                <p>حساب کاربری ندارید؟ <a href="{% url 'accounts:register' %}" class="auth-link">ثبت‌نام کنید</a></p>
+                <div style="text-align: center; margin-top: 15px;">
+                  <a href="{% url 'core:index' %}" style="color: #6c757d; text-decoration: none; font-size: 14px;">← بازگشت به صفحه اصلی</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Auth Image -->
+            <div class="auth-image">
+              <div class="auth-image-content">
+                <img src="{% static 'images/hero-banner.png' %}" alt="ورود به بوکن" class="img-cover">
+                
+                <div class="auth-features">
+                  <div class="feature-item">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <span>امنیت بالا</span>
+                  </div>
+                  
+                  <div class="feature-item">
+                    <ion-icon name="flash-outline"></ion-icon>
+                    <span>دسترسی سریع</span>
+                  </div>
+                  
+                  <div class="feature-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    <span>تجربه بهتر</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer has-bg-image" style="background-image: url('./assets/images/section-bg.jpg')">
+
+    <div class="footer-top section">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="{% url 'core:index' %}" class="logo">
+            <img src="{% static 'images/logo.svg' %}" width="138" height="28" alt="booken home">
+          </a>
+
+          <p class="footer-text">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">شرکتی</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فرصت‌های شغلی</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">درباره ما</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">تماس با ما</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سوالات متداول</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فروشندگان</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">اطلاعات</p>
+          </li>
+
+          <li>
+            <a href="{% url 'core:shop' %}" class="footer-link">فروشگاه آنلاین</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست حریم خصوصی</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست بازگشت</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست ارسال</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">شرایط خدمات</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">خدمات</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نقد و بررسی کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">مشاوره کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">خدمات تحویل</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">بیمه کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نوشتن کتاب</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          کپی رایت ۱۴۰۳ | ساخته شده با عشق توسط codewithsadee.
+        </p>
+
+        <img src="{% static 'images/payment-mehtod.png' %}" width="311" height="30" loading="lazy" alt="Payment method"
+          class="w-100">
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="{% static 'js/script.js' %}" defer></script>
+  <script src="{% static 'js/auth.js' %}" defer></script>
+  
+  <!-- 
+    - custom js for form handling
+  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const inputs = document.querySelectorAll('.form-input');
+      inputs.forEach(function(input) {
+        input.style.color = '#495057';
+        input.style.backgroundColor = 'white';
+        
+        input.addEventListener('input', function() {
+          this.style.color = '#495057';
+          this.style.backgroundColor = 'white';
+        });
+        
+        input.addEventListener('focus', function() {
+          this.style.color = '#495057';
+          this.style.backgroundColor = 'white';
+        });
+      });
+      
+      // Password toggle functionality
+      const passwordToggle = document.getElementById('passwordToggle');
+      const passwordInput = document.getElementById('password');
+      
+      if (passwordToggle && passwordInput) {
+        passwordToggle.addEventListener('click', function() {
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          
+          const icon = this.querySelector('ion-icon');
+          icon.setAttribute('name', type === 'password' ? 'eye-outline' : 'eye-off-outline');
+        });
+      }
+      
+      // Login button functionality
+      const loginButton = document.getElementById('loginButton');
+      const loginForm = document.getElementById('loginForm');
+      
+      if (loginButton && loginForm) {
+        loginButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const username = document.getElementById('username').value.trim();
+          const password = document.getElementById('password').value.trim();
+          
+          if (!username || !password) {
+            alert('لطفاً تمام فیلدها را پر کنید');
+            return;
+          }
+          
+          // Show loading state
+          const btnText = this.querySelector('.btn-text');
+          const originalText = btnText.textContent;
+          btnText.textContent = 'در حال ورود...';
+          this.disabled = true;
+          
+          // Submit the form
+          setTimeout(() => {
+            loginForm.submit();
+          }, 500);
+        });
+      }
+    });
+  </script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

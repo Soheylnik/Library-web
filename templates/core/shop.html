@@ -1,0 +1,413 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+
+{% block title %}فروشگاه - بوکن{% endblock %}
+
+{% block head_extra %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% endblock %}
+
+{% block content %}
+
+      <!-- 
+        - #PAGE HEADER
+      -->
+
+      <section class="section page-header" aria-label="page header">
+        <div class="container">
+
+          <h1 class="h1 page-title">فروشگاه</h1>
+
+          <nav class="breadcrumb">
+            <a href="{% url 'core:index' %}" class="breadcrumb-link">خانه</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">فروشگاه</span>
+          </nav>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #SHOP SECTION
+      -->
+
+      <section class="section shop" aria-label="shop">
+        <div class="container">
+
+          <div class="shop-content">
+
+            <!-- Sidebar -->
+            <aside class="shop-sidebar">
+
+              <div class="sidebar-card">
+
+                <h3 class="h3 card-title">
+                  <ion-icon name="list-outline"></ion-icon>
+                  دسته‌بندی‌ها
+                </h3>
+
+                <ul class="sidebar-list" id="categoryFilter">
+                  <li>
+                    <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if min_price %}min_price={{ min_price }}&{% endif %}{% if max_price %}max_price={{ max_price }}&{% endif %}{% if sort_by %}sort={{ sort_by }}{% endif %}" 
+                       class="sidebar-link{% if not genre_filter %} active{% endif %}">
+                      <ion-icon name="apps-outline"></ion-icon>
+                      همه دسته‌ها
+                    </a>
+                  </li>
+                  {% for genre in genres %}
+                  <li>
+                    <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if min_price %}min_price={{ min_price }}&{% endif %}{% if max_price %}max_price={{ max_price }}&{% endif %}genre={{ genre.name }}{% if sort_by %}&sort={{ sort_by }}{% endif %}" 
+                       class="sidebar-link{% if genre_filter == genre.name %} active{% endif %}">
+                      <ion-icon name="book-outline"></ion-icon>
+                      {{ genre.name }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+
+              </div>
+
+              <div class="sidebar-card">
+
+                <h3 class="h3 card-title">
+                  <ion-icon name="cash-outline"></ion-icon>
+                  محدوده قیمت
+                </h3>
+
+                <form method="GET" id="priceFilterForm">
+                  {% if search_query %}<input type="hidden" name="search" value="{{ search_query }}">{% endif %}
+                  {% if genre_filter %}<input type="hidden" name="genre" value="{{ genre_filter }}">{% endif %}
+                  {% if sort_by %}<input type="hidden" name="sort" value="{{ sort_by }}">{% endif %}
+
+                <div class="price-range">
+                  <div class="price-inputs">
+                      <input type="number" class="price-input" placeholder="حداقل" name="min_price" id="minPriceInput" value="{{ min_price }}">
+                    <span class="price-separator">تا</span>
+                      <input type="number" class="price-input" placeholder="حداکثر" name="max_price" id="maxPriceInput" value="{{ max_price }}">
+                  </div>
+                    <input type="range" class="price-range-slider" min="0" max="1000000" value="{{ max_price|default:'1000000' }}" id="priceRange">
+                  <div class="price-range-value">
+                      <span id="minPrice">{{ min_price|default:'0' }}</span> - <span id="maxPrice">{{ max_price|default:'1,000,000' }}</span> تومان
+                  </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">اعمال فیلتر</button>
+                </div>
+                </form>
+
+              </div>
+
+              <div class="sidebar-card">
+
+                <h3 class="h3 card-title">
+                  <ion-icon name="star-outline"></ion-icon>
+                  ویژگی‌ها
+                </h3>
+
+                <ul class="sidebar-list">
+                  <li>
+                    <label class="checkbox-wrapper">
+                      <input type="checkbox" class="checkbox-input" id="featuredFilter">
+                      <span class="checkbox-mark"></span>
+                      <span class="checkbox-label">
+                        <ion-icon name="star"></ion-icon>
+                        محصولات ویژه
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="checkbox-wrapper">
+                      <input type="checkbox" class="checkbox-input" id="newFilter">
+                      <span class="checkbox-mark"></span>
+                      <span class="checkbox-label">
+                        <ion-icon name="sparkles"></ion-icon>
+                        محصولات جدید
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="checkbox-wrapper">
+                      <input type="checkbox" class="checkbox-input" id="discountFilter">
+                      <span class="checkbox-mark"></span>
+                      <span class="checkbox-label">
+                        <ion-icon name="pricetag"></ion-icon>
+                        تخفیف‌دار
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="checkbox-wrapper">
+                      <input type="checkbox" class="checkbox-input" id="bestsellerFilter">
+                      <span class="checkbox-mark"></span>
+                      <span class="checkbox-label">
+                        <ion-icon name="trophy"></ion-icon>
+                        پرفروش‌ترین
+                      </span>
+                    </label>
+                  </li>
+                </ul>
+
+              </div>
+
+              <div class="sidebar-card">
+
+                <h3 class="h3 card-title">
+                  <ion-icon name="star-half-outline"></ion-icon>
+                  امتیاز
+                </h3>
+
+                <ul class="sidebar-list">
+                  <li>
+                    <label class="checkbox-wrapper">
+                      <input type="checkbox" class="checkbox-input" id="rating5">
+                      <span class="checkbox-mark"></span>
+                      <span class="checkbox-label">
+                        <div class="rating-stars">
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                        </div>
+                        <span class="rating-text">5 ستاره</span>
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="checkbox-wrapper">
+                      <input type="checkbox" class="checkbox-input" id="rating4">
+                      <span class="checkbox-mark"></span>
+                      <span class="checkbox-label">
+                        <div class="rating-stars">
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <span class="rating-text">4 ستاره و بالاتر</span>
+                      </span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="checkbox-wrapper">
+                      <input type="checkbox" class="checkbox-input" id="rating3">
+                      <span class="checkbox-mark"></span>
+                      <span class="checkbox-label">
+                        <div class="rating-stars">
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star"></ion-icon>
+                          <ion-icon name="star-outline"></ion-icon>
+                          <ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <span class="rating-text">3 ستاره و بالاتر</span>
+                      </span>
+                    </label>
+                  </li>
+                </ul>
+
+              </div>
+
+              <div class="sidebar-actions">
+                <button class="btn btn-outline" id="clearFilters">
+                  <ion-icon name="refresh-outline"></ion-icon>
+                  پاک کردن فیلترها
+                </button>
+              </div>
+
+            </aside>
+
+            <!-- Main Content -->
+            <div class="shop-main">
+
+              <!-- Toolbar -->
+              <div class="shop-toolbar">
+
+               
+
+                <div class="toolbar-right">
+
+                  <form method="GET" id="sortForm">
+                    {% if search_query %}<input type="hidden" name="search" value="{{ search_query }}">{% endif %}
+                    {% if min_price %}<input type="hidden" name="min_price" value="{{ min_price }}">{% endif %}
+                    {% if max_price %}<input type="hidden" name="max_price" value="{{ max_price }}">{% endif %}
+                    {% if genre_filter %}<input type="hidden" name="genre" value="{{ genre_filter }}">{% endif %}
+
+                  <div class="sort-wrapper">
+                    <label for="sortSelect" class="sort-label">مرتب‌سازی:</label>
+                      <select class="sort-select" id="sortSelect" name="sort" onchange="this.form.submit()">
+                        <option value="title" {% if sort_by == 'title' %}selected{% endif %}>نام: الف تا ی</option>
+                        <option value="date_desc" {% if sort_by == 'date_desc' %}selected{% endif %}>جدیدترین</option>
+                        <option value="date_asc" {% if sort_by == 'date_asc' %}selected{% endif %}>قدیمی‌ترین</option>
+                        <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>قیمت: کم به زیاد</option>
+                        <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>قیمت: زیاد به کم</option>
+                    </select>
+                  </div>
+                  </form>
+
+                  
+
+                </div>
+
+              </div>
+
+              <!-- Products Grid -->
+              <div class="products-grid" id="productsGrid">
+                <ul class="grid-list">
+                  {% for book in books %}
+                  <li>
+                    <div class="product-card">
+      
+                      <span class="card-badge">جدید</span>
+      
+                      <div class="card-banner img-holder" style="--width: 384; --height: 480;">
+                        {% if book.image %}
+                          <img src="{{ book.image.url }}" width="384" height="480" loading="lazy" alt="{{ book.title }}"
+                            class="img-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                          <div style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #f8f9fa, #e9ecef); align-items: center; justify-content: center; color: #6c757d; font-size: 14px; text-align: center; border-radius: 8px;">
+                            📚<br>بدون تصویر
+                        </div>
+                        {% else %}
+                          <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f8f9fa, #e9ecef); display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 14px; text-align: center; border-radius: 8px;">
+                            📚<br>بدون تصویر
+                      </div>
+                        {% endif %}
+      
+                        <div class="card-action">
+      
+                          <button class="action-btn" aria-label="quick view" title="مشاهده سریع">
+                            <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
+                          </button>
+      
+                          <button class="action-btn" aria-label="add to wishlist" title="افزودن به علاقه‌مندی‌ها" onclick="toggleFavorite({{ book.id }})">
+                            <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                          </button>
+      
+                          <button class="action-btn" aria-label="compare" title="مقایسه">
+                            <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                          </button>
+      
+                          <button class="action-btn" aria-label="add to cart" title="افزودن به سبد خرید">
+                            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                          </button>
+      
+                        </div>
+                      </div>
+      
+                      <div class="card-content">
+      
+                        <h3 class="h3">
+                          <a href="#" class="card-title">{{ book.title }}</a>
+                        </h3>
+      
+                        <data class="card-price" value="{{ book.price }}">{{ book.price }} تومان</data>
+      
+                        <div class="rating-wrapper">
+                          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                        </div>
+      
+                      </div>
+      
+                    </div>
+                  </li>
+                  {% endfor %}
+      
+                </ul>
+                <!-- Products will be loaded here -->
+              </div>
+
+              <!-- Loading Spinner -->
+              <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>در حال بارگذاری...</p>
+              </div>
+
+              <!-- No Results -->
+              <div class="no-results" id="noResults" style="display: none;">
+                <div class="no-results-content">
+                  <ion-icon name="search-outline"></ion-icon>
+                  <h3>محصولی یافت نشد</h3>
+                  <p>لطفاً فیلترهای جستجو را تغییر دهید</p>
+                  <button class="btn btn-primary" id="resetFilters">بازنشانی فیلترها</button>
+                </div>
+              </div>
+
+              <!-- Pagination -->
+              <nav class="pagination" id="pagination">
+                <!-- Pagination will be generated here -->
+              </nav>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/shop.js' %}" defer></script>
+  <script>
+  function toggleFavorite(bookId) {
+      fetch('{% url "accounts:toggle_favorite" %}', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': '{{ csrf_token }}'
+          },
+          body: JSON.stringify({
+              book_id: bookId
+          })
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.status === 'added') {
+              alert('کتاب به علاقه‌مندی‌ها اضافه شد');
+          } else if (data.status === 'removed') {
+              alert('کتاب از علاقه‌مندی‌ها حذف شد');
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+  }
+
+  // فیلتر قیمت
+  document.addEventListener('DOMContentLoaded', function() {
+      const priceRange = document.getElementById('priceRange');
+      const minPriceInput = document.getElementById('minPriceInput');
+      const maxPriceInput = document.getElementById('maxPriceInput');
+      const minPriceDisplay = document.getElementById('minPrice');
+      const maxPriceDisplay = document.getElementById('maxPrice');
+
+      if (priceRange && minPriceInput && maxPriceInput) {
+          priceRange.addEventListener('input', function() {
+              maxPriceInput.value = this.value;
+              maxPriceDisplay.textContent = parseInt(this.value).toLocaleString();
+          });
+
+          minPriceInput.addEventListener('input', function() {
+              if (parseInt(this.value) > parseInt(maxPriceInput.value)) {
+                  this.value = maxPriceInput.value;
+              }
+              minPriceDisplay.textContent = parseInt(this.value).toLocaleString();
+          });
+
+          maxPriceInput.addEventListener('input', function() {
+              if (parseInt(this.value) < parseInt(minPriceInput.value)) {
+                  this.value = minPriceInput.value;
+              }
+              maxPriceDisplay.textContent = parseInt(this.value).toLocaleString();
+          });
+      }
+  });
+  </script>
+{% endblock %}

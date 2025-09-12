@@ -1,0 +1,107 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+
+{% block title %}ثبت نام - بوکن{% endblock %}
+
+{% block content %}
+
+<style>
+input[type="text"], 
+input[type="password"], 
+input[type="email"] {
+    color: #495057 !important;
+    background-color: white !important;
+    font-size: 16px !important;
+    -webkit-text-fill-color: #495057 !important;
+    -webkit-opacity: 1 !important;
+    opacity: 1 !important;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="email"]:focus {
+    color: #495057 !important;
+    background-color: white !important;
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+input[type="email"]::placeholder {
+    color: #6c757d !important;
+    opacity: 1 !important;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(function(input) {
+        input.style.color = '#495057';
+        input.style.backgroundColor = 'white';
+        
+        input.addEventListener('input', function() {
+            this.style.color = '#495057';
+            this.style.backgroundColor = 'white';
+        });
+        
+        input.addEventListener('focus', function() {
+            this.style.color = '#495057';
+            this.style.backgroundColor = 'white';
+        });
+    });
+});
+</script>
+<div style="max-width: 400px; margin: 100px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; margin-bottom: 30px; color: #333;">ثبت نام</h2>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div style="background: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #f5c6cb;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Display form errors -->
+        {% if form.errors %}
+            <div style="background: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #f5c6cb;">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; color: #555;">نام کاربری:</label>
+            <input type="text" name="username" value="{{ form.username.value|default:'' }}" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; color: #495057; background-color: white;">
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; color: #555;">رمز عبور:</label>
+            <input type="password" name="password1" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; color: #495057; background-color: white;">
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; color: #555;">تکرار رمز عبور:</label>
+            <input type="password" name="password2" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; color: #495057; background-color: white;">
+        </div>
+
+        <button type="submit" style="width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">ثبت نام</button>
+    </form>
+    
+    <p style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'accounts:login' %}" style="color: #007bff; text-decoration: none;">قبلاً حساب دارید؟ وارد شوید</a>
+    </p>
+    
+    <div style="text-align: center; margin-top: 15px;">
+        <a href="{% url 'core:index' %}" style="color: #6c757d; text-decoration: none; font-size: 14px;">← بازگشت به صفحه اصلی</a>
+    </div>
+      </div>
+{% endblock %}

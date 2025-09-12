@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>سبد خرید - بوکن</title>
+  <meta name="title" content="سبد خرید - بوکن">
+  <meta name="description" content="سبد خرید شما - بررسی و تکمیل سفارش">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="{% static './favicon.svg' %}" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Work+Sans:wght@400;500;700&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="header-top">
+      <div class="container">
+
+        <a href="index.html" class="logo">
+          <img src="{% static './assets/images/logo.svg' %}" width="138" height="28" alt="booken home">
+        </a>
+
+        <div class="input-wrapper">
+          <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+          <button class="btn btn-primary">جستجو</button>
+        </div>
+
+        <div class="header-action">
+
+          <button class="header-action-btn" aria-label="cart" title="سبد خرید" id="cartBtn">
+            <span class="span" id="cartCount">0</span>
+
+            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="nav-open-btn" aria-label="open menu" title="باز کردن منو" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="header-action-btn" aria-label="user" title="کاربر" id="userBtn">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="header-bottom" data-navbar>
+      <div class="container">
+
+        <nav class="navbar">
+
+          <button class="nav-close-btn" data-nav-toggler aria-label="clsoe menu" title="بستن منو">
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <div class="navbar-top">
+            <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+            <button class="search-btn" aria-label="Search">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+
+            <li>
+              <a href="index.html" class="navbar-link">خانه</a>
+            </li>
+
+            <li>
+              <a href="blog.html" class="navbar-link">وبلاگ</a>
+            </li>
+
+            <li>
+              <a href="shop.html" class="navbar-link">فروشگاه</a>
+            </li>
+
+            <li>
+              <a href="about.html" class="navbar-link">درباره ما</a>
+            </li>
+
+            <li>
+              <a href="contact.html" class="navbar-link">تماس با ما</a>
+            </li>
+
+          </ul>
+
+        </nav>
+
+        <a href="tel:+989123456789" class="header-contact-link">
+          <ion-icon name="headset-outline" aria-hidden="true"></ion-icon>
+
+          <span class="span">(+98)-912-345-6789</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="overlay" data-overlay data-nav-toggler></div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #PAGE HEADER
+      -->
+
+      <section class="section page-header" aria-label="page header">
+        <div class="container">
+
+          <h1 class="h1 page-title">سبد خرید</h1>
+
+          <nav class="breadcrumb">
+            <a href="index.html" class="breadcrumb-link">خانه</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="shop.html" class="breadcrumb-link">فروشگاه</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">سبد خرید</span>
+          </nav>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #CART SECTION
+      -->
+
+      <section class="section cart" aria-label="shopping cart">
+        <div class="container">
+
+          <div class="cart-content">
+
+            <!-- Cart Items -->
+            <div class="cart-items" id="cartItems">
+              
+              <!-- Cart Item Template -->
+              <div class="cart-item" data-id="1">
+                <div class="item-image">
+                  <img src="{% static './assets/images/book-1.png' %}" alt="نام کتاب" class="img-cover">
+                </div>
+                
+                <div class="item-details">
+                  <h3 class="item-title">نام کتاب</h3>
+                  <p class="item-author">نویسنده کتاب</p>
+                  <div class="item-meta">
+                    <span class="item-category">دسته‌بندی</span>
+                    <div class="item-rating">
+                      <div class="rating">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                      </div>
+                      <span class="rating-text">(4.2)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="item-price">
+                  <span class="current-price">150,000 تومان</span>
+                  <span class="original-price">200,000 تومان</span>
+                </div>
+
+                <div class="item-quantity">
+                  <button class="quantity-btn" data-action="decrease">
+                    <ion-icon name="remove-outline"></ion-icon>
+                  </button>
+                  <input type="number" class="quantity-input" value="1" min="1" max="10">
+                  <button class="quantity-btn" data-action="increase">
+                    <ion-icon name="add-outline"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="item-total">
+                  <span class="total-price">150,000 تومان</span>
+                </div>
+
+                <div class="item-actions">
+                  <button class="action-btn wishlist-btn" title="افزودن به علاقه‌مندی‌ها">
+                    <ion-icon name="heart-outline"></ion-icon>
+                  </button>
+                  <button class="action-btn remove-btn" title="حذف از سبد خرید">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Empty Cart -->
+            <div class="empty-cart" id="emptyCart" style="display: none;">
+              <div class="empty-cart-content">
+                <ion-icon name="bag-outline"></ion-icon>
+                <h3>سبد خرید شما خالی است</h3>
+                <p>محصولات مورد علاقه خود را به سبد خرید اضافه کنید</p>
+                <a href="shop.html" class="btn btn-primary">
+                  <ion-icon name="storefront-outline"></ion-icon>
+                  شروع خرید
+                </a>
+              </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary" id="cartSummary">
+              <div class="summary-card">
+                <h3 class="summary-title">خلاصه سفارش</h3>
+                
+                <div class="summary-details">
+                  <div class="summary-row">
+                    <span class="summary-label">تعداد کالا:</span>
+                    <span class="summary-value" id="itemCount">1</span>
+                  </div>
+                  
+                  <div class="summary-row">
+                    <span class="summary-label">مجموع کالاها:</span>
+                    <span class="summary-value" id="subtotal">150,000 تومان</span>
+                  </div>
+                  
+                  <div class="summary-row">
+                    <span class="summary-label">هزینه ارسال:</span>
+                    <span class="summary-value" id="shipping">25,000 تومان</span>
+                  </div>
+                  
+                  <div class="summary-row">
+                    <span class="summary-label">تخفیف:</span>
+                    <span class="summary-value discount" id="discount">-15,000 تومان</span>
+                  </div>
+                  
+                  <div class="summary-row total">
+                    <span class="summary-label">مجموع کل:</span>
+                    <span class="summary-value" id="total">160,000 تومان</span>
+                  </div>
+                </div>
+
+                <div class="coupon-section">
+                  <h4 class="coupon-title">کد تخفیف</h4>
+                  <div class="coupon-input-group">
+                    <input type="text" class="coupon-input" placeholder="کد تخفیف خود را وارد کنید" id="couponInput">
+                    <button class="btn btn-outline" id="applyCoupon">اعمال</button>
+                  </div>
+                  <div class="coupon-message" id="couponMessage"></div>
+                </div>
+
+                <div class="checkout-actions">
+                  <a href="checkout.html" class="btn btn-primary checkout-btn">
+                    <ion-icon name="card-outline"></ion-icon>
+                    ادامه خرید
+                  </a>
+                  
+                  <a href="shop.html" class="btn btn-outline continue-shopping">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                    ادامه خرید
+                  </a>
+                </div>
+
+                <div class="security-badges">
+                  <div class="security-item">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <span>پرداخت امن</span>
+                  </div>
+                  <div class="security-item">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <span>اطلاعات محفوظ</span>
+                  </div>
+                  <div class="security-item">
+                    <ion-icon name="refresh-outline"></ion-icon>
+                    <span>بازگشت آسان</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Recommended Products -->
+          <div class="recommended-section">
+            <h2 class="section-title">محصولات پیشنهادی</h2>
+            <p class="section-text">کتاب‌هایی که ممکن است دوست داشته باشید</p>
+            
+            <div class="recommended-grid" id="recommendedGrid">
+              <!-- Recommended products will be loaded here -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer has-bg-image" style="background-image: url('./assets/images/section-bg.jpg')">
+
+    <div class="footer-top section">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="index.html" class="logo">
+            <img src="{% static './assets/images/logo.svg' %}" width="138" height="28" alt="booken home">
+          </a>
+
+          <p class="footer-text">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">شرکتی</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فرصت‌های شغلی</a>
+          </li>
+
+          <li>
+            <a href="about.html" class="footer-link">درباره ما</a>
+          </li>
+
+          <li>
+            <a href="contact.html" class="footer-link">تماس با ما</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سوالات متداول</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فروشندگان</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">اطلاعات</p>
+          </li>
+
+          <li>
+            <a href="shop.html" class="footer-link">فروشگاه آنلاین</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست حریم خصوصی</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست بازگشت</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست ارسال</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">شرایط خدمات</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">خدمات</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نقد و بررسی کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">مشاوره کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">خدمات تحویل</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">بیمه کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نوشتن کتاب</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          کپی رایت ۱۴۰۳ | ساخته شده با عشق توسط codewithsadee.
+        </p>
+
+        <img src="{% static './assets/images/payment-mehtod.png' %}" width="311" height="30" loading="lazy" alt="Payment method"
+          class="w-100">
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="{% static './assets/js/script.js' %}" defer></script>
+  <script src="{% static './assets/js/cart.js' %}" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

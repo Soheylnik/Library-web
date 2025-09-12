@@ -1,0 +1,37 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+
+{% block title %}پروفایل - بوکن{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 50px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; margin-bottom: 30px; color: #333;">پروفایل کاربری</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; color: #555;">نام کاربری:</label>
+            <input type="text" value="{{ user.username }}" disabled style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background: #f5f5f5;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; color: #555;">ایمیل:</label>
+            <input type="email" value="{{ user.email }}" disabled style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background: #f5f5f5;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; color: #555;">شماره تلفن:</label>
+            <input type="text" name="phone" value="{{ profile.phone }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; color: #555;">آدرس:</label>
+            <textarea name="address" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">{{ profile.address }}</textarea>
+        </div>
+        
+        <button type="submit" style="width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">ذخیره تغییرات</button>
+    </form>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'accounts:favorites' %}" style="color: #007bff; text-decoration: none; margin-left: 20px;">علاقه‌مندی‌ها</a>
+        <a href="{% url 'accounts:logout' %}" style="color: #dc3545; text-decoration: none;">خروج</a>
+    </div>
+</div>
+{% endblock %}

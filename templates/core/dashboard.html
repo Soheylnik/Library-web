@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>داشبورد - بوکن</title>
+  <meta name="title" content="داشبورد - بوکن">
+  <meta name="description" content="داشبورد کاربری بوکن">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="{% static './favicon.svg' %}" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="{% static './assets/css/style.css' %}">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Work+Sans:wght@400;500;700&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="header-top">
+      <div class="container">
+
+        <a href="index.html" class="logo">
+          <img src="{% static './assets/images/logo.svg' %}" width="138" height="28" alt="booken home">
+        </a>
+
+        <div class="input-wrapper">
+          <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+          <button class="btn btn-primary">جستجو</button>
+        </div>
+
+        <div class="header-action">
+
+          <button class="header-action-btn" aria-label="cart" title="سبد خرید">
+            <span class="span">0</span>
+
+            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="nav-open-btn" aria-label="open menu" title="باز کردن منو" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <button class="header-action-btn" aria-label="user" title="کاربر" id="userMenuBtn">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="header-bottom" data-navbar>
+      <div class="container">
+
+        <nav class="navbar">
+
+          <button class="nav-close-btn" data-nav-toggler aria-label="clsoe menu" title="بستن منو">
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+          <div class="navbar-top">
+            <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field">
+
+            <button class="search-btn" aria-label="Search">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+
+            <li>
+              <a href="index.html" class="navbar-link">خانه</a>
+            </li>
+
+            <li>
+              <a href="blog.html" class="navbar-link">وبلاگ</a>
+            </li>
+
+            <li>
+              <a href="shop.html" class="navbar-link">فروشگاه</a>
+            </li>
+
+            <li>
+              <a href="about.html" class="navbar-link">درباره ما</a>
+            </li>
+
+            <li>
+              <a href="contact.html" class="navbar-link">تماس با ما</a>
+            </li>
+
+          </ul>
+
+        </nav>
+
+        <a href="tel:+989123456789" class="header-contact-link">
+          <ion-icon name="headset-outline" aria-hidden="true"></ion-icon>
+
+          <span class="span">(+98)-912-345-6789</span>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="overlay" data-overlay data-nav-toggler></div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- 
+        - #DASHBOARD SECTION
+      -->
+
+      <section class="section dashboard" aria-label="dashboard">
+        <div class="container">
+
+          <div class="dashboard-content">
+
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+              <div class="user-profile">
+                <div class="profile-avatar">
+                  <img src="{% static './assets/images/hero-banner.png' %}" alt="پروفایل کاربر" class="img-cover" id="userAvatar">
+                </div>
+                <div class="profile-info">
+                  <h3 class="profile-name" id="userName">نام کاربر</h3>
+                  <p class="profile-email" id="userEmail">user@example.com</p>
+                </div>
+              </div>
+
+              <nav class="dashboard-nav">
+                <ul class="nav-list">
+                  <li>
+                    <a href="#overview" class="nav-link active" data-section="overview">
+                      <ion-icon name="home-outline"></ion-icon>
+                      <span>نمای کلی</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#orders" class="nav-link" data-section="orders">
+                      <ion-icon name="receipt-outline"></ion-icon>
+                      <span>سفارش‌ها</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#wishlist" class="nav-link" data-section="wishlist">
+                      <ion-icon name="heart-outline"></ion-icon>
+                      <span>علاقه‌مندی‌ها</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#profile" class="nav-link" data-section="profile">
+                      <ion-icon name="person-outline"></ion-icon>
+                      <span>پروفایل</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#addresses" class="nav-link" data-section="addresses">
+                      <ion-icon name="location-outline"></ion-icon>
+                      <span>آدرس‌ها</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#settings" class="nav-link" data-section="settings">
+                      <ion-icon name="settings-outline"></ion-icon>
+                      <span>تنظیمات</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+
+              <div class="logout-section">
+                <button class="logout-btn" id="logoutBtn">
+                  <ion-icon name="log-out-outline"></ion-icon>
+                  <span>خروج</span>
+                </button>
+              </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="dashboard-main">
+              
+              <!-- Overview Section -->
+              <div class="dashboard-section active" id="overview">
+                <div class="section-header">
+                  <h2 class="section-title">نمای کلی</h2>
+                  <p class="section-subtitle">خوش آمدید! اینجا خلاصه‌ای از فعالیت‌های شماست</p>
+                </div>
+
+                <div class="stats-grid">
+                  <div class="stat-card">
+                    <div class="stat-icon">
+                      <ion-icon name="receipt-outline"></ion-icon>
+                    </div>
+                    <div class="stat-content">
+                      <h3 class="stat-number" id="totalOrders">0</h3>
+                      <p class="stat-label">سفارش کل</p>
+                    </div>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-icon">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </div>
+                    <div class="stat-content">
+                      <h3 class="stat-number" id="wishlistCount">0</h3>
+                      <p class="stat-label">علاقه‌مندی‌ها</p>
+                    </div>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-icon">
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+                    <div class="stat-content">
+                      <h3 class="stat-number" id="totalSpent">0</h3>
+                      <p class="stat-label">مجموع خرید (تومان)</p>
+                    </div>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-icon">
+                      <ion-icon name="time-outline"></ion-icon>
+                    </div>
+                    <div class="stat-content">
+                      <h3 class="stat-number" id="lastLogin">-</h3>
+                      <p class="stat-label">آخرین ورود</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="recent-activity">
+                  <h3 class="activity-title">فعالیت‌های اخیر</h3>
+                  <div class="activity-list" id="recentActivity">
+                    <!-- Recent activities will be loaded here -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Orders Section -->
+              <div class="dashboard-section" id="orders">
+                <div class="section-header">
+                  <h2 class="section-title">سفارش‌های من</h2>
+                  <p class="section-subtitle">تاریخچه سفارش‌های شما</p>
+                </div>
+
+                <div class="orders-list" id="ordersList">
+                  <!-- Orders will be loaded here -->
+                </div>
+              </div>
+
+              <!-- Wishlist Section -->
+              <div class="dashboard-section" id="wishlist">
+                <div class="section-header">
+                  <h2 class="section-title">لیست علاقه‌مندی‌ها</h2>
+                  <p class="section-subtitle">کتاب‌هایی که دوست دارید</p>
+                </div>
+
+                <div class="wishlist-grid" id="wishlistGrid">
+                  <!-- Wishlist items will be loaded here -->
+                </div>
+              </div>
+
+              <!-- Profile Section -->
+              <div class="dashboard-section" id="profile">
+                <div class="section-header">
+                  <h2 class="section-title">ویرایش پروفایل</h2>
+                  <p class="section-subtitle">اطلاعات شخصی خود را به‌روزرسانی کنید</p>
+                </div>
+
+                <form class="profile-form" id="profileForm">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="firstName" class="form-label">نام</label>
+                      <input type="text" id="firstName" name="firstName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastName" class="form-label">نام خانوادگی</label>
+                      <input type="text" id="lastName" name="lastName" class="form-input" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email" class="form-label">ایمیل</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone" class="form-label">شماره موبایل</label>
+                    <input type="tel" id="phone" name="phone" class="form-input">
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">
+                    ذخیره تغییرات
+                    <ion-icon name="save-outline"></ion-icon>
+                  </button>
+                </form>
+              </div>
+
+              <!-- Addresses Section -->
+              <div class="dashboard-section" id="addresses">
+                <div class="section-header">
+                  <h2 class="section-title">آدرس‌های من</h2>
+                  <p class="section-subtitle">مدیریت آدرس‌های تحویل</p>
+                </div>
+
+                <div class="addresses-list" id="addressesList">
+                  <!-- Addresses will be loaded here -->
+                </div>
+              </div>
+
+              <!-- Settings Section -->
+              <div class="dashboard-section" id="settings">
+                <div class="section-header">
+                  <h2 class="section-title">تنظیمات</h2>
+                  <p class="section-subtitle">تنظیمات حساب کاربری</p>
+                </div>
+
+                <div class="settings-content">
+                  <div class="setting-group">
+                    <h3 class="setting-title">تنظیمات اعلان‌ها</h3>
+                    <div class="setting-item">
+                      <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" id="emailNotifications" checked>
+                        <span class="checkbox-mark"></span>
+                        <span class="checkbox-label">اعلان‌های ایمیل</span>
+                      </label>
+                    </div>
+                    <div class="setting-item">
+                      <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" id="smsNotifications">
+                        <span class="checkbox-mark"></span>
+                        <span class="checkbox-label">اعلان‌های پیامکی</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="setting-group">
+                    <h3 class="setting-title">تنظیمات حریم خصوصی</h3>
+                    <div class="setting-item">
+                      <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" id="profileVisibility" checked>
+                        <span class="checkbox-mark"></span>
+                        <span class="checkbox-label">نمایش پروفایل عمومی</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="setting-group">
+                    <h3 class="setting-title">تغییر رمز عبور</h3>
+                    <form class="password-form" id="passwordForm">
+                      <div class="form-group">
+                        <label for="currentPassword" class="form-label">رمز عبور فعلی</label>
+                        <input type="password" id="currentPassword" name="currentPassword" class="form-input" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="newPassword" class="form-label">رمز عبور جدید</label>
+                        <input type="password" id="newPassword" name="newPassword" class="form-input" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="confirmNewPassword" class="form-label">تأیید رمز عبور جدید</label>
+                        <input type="password" id="confirmNewPassword" name="confirmNewPassword" class="form-input" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        تغییر رمز عبور
+                        <ion-icon name="key-outline"></ion-icon>
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer has-bg-image" style="background-image: url('./assets/images/section-bg.jpg')">
+
+    <div class="footer-top section">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="index.html" class="logo">
+            <img src="{% static './assets/images/logo.svg' %}" width="138" height="28" alt="booken home">
+          </a>
+
+          <p class="footer-text">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">شرکتی</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فرصت‌های شغلی</a>
+          </li>
+
+          <li>
+            <a href="about.html" class="footer-link">درباره ما</a>
+          </li>
+
+          <li>
+            <a href="contact.html" class="footer-link">تماس با ما</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سوالات متداول</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">فروشندگان</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">اطلاعات</p>
+          </li>
+
+          <li>
+            <a href="shop.html" class="footer-link">فروشگاه آنلاین</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست حریم خصوصی</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست بازگشت</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">سیاست ارسال</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">شرایط خدمات</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">خدمات</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نقد و بررسی کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">مشاوره کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">خدمات تحویل</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">بیمه کتاب</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">نوشتن کتاب</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          کپی رایت ۱۴۰۳ | ساخته شده با عشق توسط codewithsadee.
+        </p>
+
+        <img src="{% static './assets/images/payment-mehtod.png' %}" width="311" height="30" loading="lazy" alt="Payment method"
+          class="w-100">
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="{% static './assets/js/script.js' %}" defer></script>
+  <script src="{% static './assets/js/dashboard.js' %}" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

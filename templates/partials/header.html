@@ -1,0 +1,120 @@
+{% load static %}
+<header class="header" data-header>
+  <div class="header-top">
+    <div class="container">
+
+      <a href="{% url 'core:index' %}" class="logo">
+        <img src="{% static 'images/logo.svg' %}" width="138" height="28" alt="booken home">
+      </a>
+
+      <div class="input-wrapper">
+        <form method="GET" action="{% url 'core:shop' %}" style="display: flex; gap: 10px;">
+            <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field" id="searchInput" value="{{ request.GET.search }}">
+            <button class="btn btn-primary" id="searchBtn" type="submit">جستجو</button>
+        </form>
+      </div>
+
+      <div class="header-action">
+        <button class="header-action-btn" aria-label="cart" title="سبد خرید" id="cartBtn">
+          <span class="span" id="cartCount">0</span>
+          <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <button class="nav-open-btn" aria-label="open menu" title="باز کردن منو" data-nav-toggler>
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        {% comment %} <button class="header-action-btn" aria-label="user" title="کاربر" id="userBtn">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+        </button> {% endcomment %}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="header-bottom" data-navbar>
+    <div class="container">
+
+      <nav class="navbar">
+
+        <button class="nav-close-btn" data-nav-toggler aria-label="clsoe menu" title="بستن منو">
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <div class="navbar-top">
+          <form method="GET" action="{% url 'core:shop' %}" style="display: flex; gap: 10px;">
+            <input type="search" name="search" placeholder="جستجو در فروشگاه ما" class="input-field" value="{{ request.GET.search }}">
+            <button class="search-btn" aria-label="Search" type="submit">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </form>
+        </div>
+
+        <ul class="navbar-list">
+    <li>
+        <a href="{% url 'core:index' %}" class="navbar-link{% if request.resolver_match.url_name == 'index' %} active{% endif %}">
+            خانه
+        </a>
+    </li>
+    
+    <li>
+        <a href="{% url 'core:shop' %}" class="navbar-link{% if request.resolver_match.url_name == 'shop' %} active{% endif %}">
+            فروشگاه
+        </a>
+    </li>
+
+    <li>
+        {% if user.is_authenticated %}
+            <a href="{% url 'core:book_management' %}" 
+               class="navbar-link{% if request.resolver_match.url_name == 'book_management' %} active{% endif %}">
+                مدیریت کتاب‌ها
+            </a>
+        {% else %}
+            <a href="{% url 'accounts:login' %}?next={% url 'core:book_management' %}" class="navbar-link">
+                مدیریت کتاب‌ها
+            </a>
+        {% endif %}
+    </li>
+
+    <li>
+        {% if user.is_authenticated %}
+            <a href="{% url 'accounts:favorites' %}" 
+               class="navbar-link{% if request.resolver_match.url_name == 'favorites' %} active{% endif %}">
+                علاقه‌مندی‌ها
+            </a>
+        {% endif %}
+    </li>
+</ul>
+
+
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+        {% if user.is_authenticated %}
+            <a href="{% url 'accounts:profile' %}" class="header-contact-link">
+                <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                <span class="span">{{ user.username }}</span>
+            </a>
+            <a href="{% url 'accounts:logout' %}" class="header-contact-link" style="color: #dc3545;">
+                <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
+                <span class="span">خروج</span>
+            </a>
+        {% else %}
+            <a href="{% url 'accounts:login' %}" class="header-contact-link">
+                <ion-icon name="log-in-outline" aria-hidden="true"></ion-icon>
+                <span class="span">ورود</span>
+            </a>
+            <a href="{% url 'accounts:register' %}" class="header-contact-link">
+                <ion-icon name="person-add-outline" aria-hidden="true"></ion-icon>
+                <span class="span">ثبت نام</span>
+            </a>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="overlay" data-overlay data-nav-toggler></div>
+</header>
+
+
